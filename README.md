@@ -24,19 +24,24 @@ git clone https://github.com/3KET/3ket.github.io.git
 4. [Grab a personal access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 
-6. Copy the `docker.env.example` file with the name `docker.env` and change the variables.
+5. Copy the `docker.env.example` file with the name `docker.env` and change the variables.
    
    Tip: You can get your Git username and email as follows:
    
    `git config user.name` and `git config user.email`
 
 
-5. To use the development environment, run the commands;
+6. To use the development environment, run the commands;
 
 ```shell 
 cd 3ket.github.io && \
 docker compose up -d && \
-docker exec -ti 3ketgithubio_environment_1 /bin/sh
+docker ps
+```
+
+7. Get the value written in the `NAMES` column of the output and run  the command
+```shell
+docker exec -ti <NAMES COLUMN VALUE> /bin/sh
 ```
 
 Now you have an interactive shell session to the Docker image with Alpine Linux. 
