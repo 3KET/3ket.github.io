@@ -9,6 +9,5 @@ services:
     - "3000:3000"
     volumes:
     - .:/app
-    - ~/.ssh:/home/user/.ssh:ro
     env_file:
       - docker.env
