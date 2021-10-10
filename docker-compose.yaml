@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  environment:
+    build:
+      context: ./
+      dockerfile: Dockerfile.environment
+    image: 3ket-environment:dev
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/app
+    - ~/.ssh:/home/user/.ssh:ro
+    env_file:
+      - docker.env

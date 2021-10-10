@@ -1,0 +1,22 @@
+# This Dockerfile.environment defines a development environment
+# used by the team for dependency management.
+
+FROM node:16.10.0-alpine3.14
+
+# Install apk dependencies
+RUN apk add git curl net-tools openssh-client
+
+# Install npm dependencies
+RUN npm install -g create-react-app \
+                   create-react-native-app \
+                   react-native-cli
+
+COPY docker_entry.sh /docker_entry.sh
+RUN chmod +x /docker_entry.sh
+
+RUN mkdir /app
+WORKDIR /app
+
+EXPOSE 3000
+
+ENTRYPOINT ["/docker_entry.sh"]
