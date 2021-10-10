@@ -44,5 +44,5 @@ docker ps
 docker exec -ti <NAMES COLUMN VALUE> /bin/sh
 ```
 
-Now you have an interactive shell session to the Docker image with Alpine Linux. 
+Now you have an interactive shell session to the Docker image with Alpine Linux (you should see a command prompt like: `/app # `). 
 You can safely run `npm install` or `yarn install` without thinking about dependency issues.

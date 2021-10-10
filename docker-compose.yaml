@@ -1,6 +1,7 @@
 version: '3.9'
 services:
-  environment:
+  3ket-environment:
+    container_name: 3ket-environment
     build:
       context: ./
       dockerfile: Dockerfile.environment

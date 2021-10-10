@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    touch-action: none;
+}
+
+Canvas {
+    height: 100vh;
+}
+
+body {
+    background: #000;
+}
+
+.hero-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.code-text {
+    font-family: 'Courier Prime', monospace;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
