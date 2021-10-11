@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import {OrbitControls} from '@react-three/drei'
+import {OrbitControls, Stars} from '@react-three/drei'
 import "./App.css"
+import {BoxBufferGeometry} from "three";
 
 function Torus(props) {
     const meshRef = useRef()
@@ -16,9 +17,19 @@ function Torus(props) {
     )
 }
 
+function Box(props) {
+    return (
+        <mesh {...props}>
+            <boxBufferGeometry attatch="geometry" args={[1, 1, 1]} />
+            <meshNormalMaterial />
+        </mesh>
+    )
+}
+
 export default function App() {
     return (
-        <Canvas>
+        <Canvas className={"background-canvas"}>
+            <Stars />
             <Torus />
             <OrbitControls />
         </Canvas>
