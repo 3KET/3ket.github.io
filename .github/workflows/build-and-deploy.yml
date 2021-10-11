@@ -2,7 +2,7 @@ name: Buid and Deploy Webpage
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
