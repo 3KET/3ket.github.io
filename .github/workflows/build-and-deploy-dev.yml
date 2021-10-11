@@ -1,4 +1,4 @@
-name: Buid and Deploy Webpage Main
+name: Build and Deploy Webpage Dev
 on:
   push:
     branches:
@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          apt-get update
-          apt-get install gettext
+          sudo apt-get update
+          sudo apt-get install gettext
 
       - name: Run envsubst
         run: |
