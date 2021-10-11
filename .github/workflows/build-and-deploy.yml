@@ -28,10 +28,12 @@ jobs:
         run: npm run build
         
       - name: Deploy
-        run: |
-          git config --global user.name '${{ secrets.USER_NAME }}'
-          git config --global user.email '${{ secrets.USER_EMAIL }}'          
-          npm run deploy
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: website
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 
 
