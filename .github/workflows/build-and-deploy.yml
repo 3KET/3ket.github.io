@@ -28,6 +28,10 @@ jobs:
         run: npm run build
         
       - name: Deploy
-        run: npm run deploy
+        run: |
+          git config --global user.name 'github-actions[deploy-bot]'
+          git config --global user.email 'github-actions[deploy-bot]@users.noreply.github.com'          
+          npm run deploy
+          
 
 
