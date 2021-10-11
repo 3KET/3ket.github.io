@@ -20,6 +20,7 @@ export default function App() {
     return (
         <Canvas>
             <Torus />
+            <OrbitControls />
         </Canvas>
     )
 }
