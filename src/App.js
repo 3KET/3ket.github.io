@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import {OrbitControls, Stars} from '@react-three/drei'
 import "./App.css"
-import {BoxBufferGeometry} from "three";
 
 function Torus(props) {
     const meshRef = useRef()
@@ -12,15 +11,6 @@ function Torus(props) {
     return (
         <mesh {...props} ref={meshRef}>
             <torusGeometry args={[1, 0.5, 32, 100]} />
-            <meshNormalMaterial />
-        </mesh>
-    )
-}
-
-function Box(props) {
-    return (
-        <mesh {...props}>
-            <boxBufferGeometry attatch="geometry" args={[1, 1, 1]} />
             <meshNormalMaterial />
         </mesh>
     )

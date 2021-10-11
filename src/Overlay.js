@@ -1,6 +1,5 @@
 import "./Overlay.css"
 import down_arrow from "./image/down-arrow.svg"
-import {useRef} from "react";
 import specification_report from "./static/reports/project_specification_report.pdf"
 
 console.log(down_arrow)
@@ -27,7 +26,7 @@ export function Overlay() {
                 coming soon
             </p>
 
-            <a href={specification_report} target={"_blank"} className={"report-text"}>
+            <a href={specification_report} rel={"noopener"} target={"_blank"} className={"report-text"}>
                 Specification Report
             </a>
             {/*<div className={"flex-grow"}/>
