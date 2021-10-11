@@ -24,13 +24,14 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          apt-get update
-          apt-get install gettext
+          sudo apt-get update
+          sudo apt-get install gettext -y
 
       - name: Run envsubst
         run: envsubst < package.json > package.json
         env:
           HOMEPAGE: "https://3ket.live"
+          DEPLOY_COMMAND: gh-pages -b webpage -d build
 
       - name: Build
         run: npm run build

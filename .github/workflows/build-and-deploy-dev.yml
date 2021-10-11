@@ -25,7 +25,7 @@ jobs:
         run: |
           npm install
           sudo apt-get update
-          sudo apt-get install gettext
+          sudo apt-get install gettext -y
 
       - name: Run envsubst
         run: |
@@ -33,6 +33,7 @@ jobs:
           mv package.tpl.json package.json
         env:
           HOMEPAGE: "https://dev.3ket.live"
+          DEPLOY_COMMAND: gh-pages -b dev-webpage -d build
 
       - name: Build
         run: npm run build
@@ -44,7 +45,7 @@ jobs:
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2
         with:
-          target_branch: webpage
+          target_branch: dev-webpage
           build_dir: build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
