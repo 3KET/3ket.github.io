@@ -1,8 +1,8 @@
-name: Buid and Deploy Webpage
+name: Buid and Deploy Webpage Main
 on:
   push:
     branches:
-      - main
+      - development
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -22,14 +22,24 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          apt-get update
+          apt-get install gettext
+
+      - name: Run envsubst
+        run: |
+          envsubst < package.json > package.tpl.json
+          mv package.tpl.json package.json
+        env:
+          HOMEPAGE: "https://dev.3ket.live"
 
       - name: Build
         run: npm run build
         
       - name: Create and populate the CNAME file
         run: |
-          echo "3ket.live" >> build/CNAME
+          echo "dev.3ket.live" >> build/CNAME
         
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2

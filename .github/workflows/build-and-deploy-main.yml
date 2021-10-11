@@ -1,0 +1,51 @@
+name: Buid and Deploy Webpage Main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.10.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Setup Node v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: |
+          npm install
+          apt-get update
+          apt-get install gettext
+
+      - name: Run envsubst
+        run: envsubst < package.json > package.json
+        env:
+          HOMEPAGE: "https://3ket.live"
+
+      - name: Build
+        run: npm run build
+        
+      - name: Create and populate the CNAME file
+        run: |
+          echo "3ket.live" >> build/CNAME
+        
+      - name: Deploy
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: webpage
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+
+
