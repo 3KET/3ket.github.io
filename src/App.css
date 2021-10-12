@@ -15,7 +15,8 @@ body,
 }
 
 body {
-    background: #000;
+    background: rgb(255,235,238);
+    background: linear-gradient(145deg, rgba(255,235,238,1) 0%, rgba(255,236,205,1) 100%);
 }
 
 Canvas {

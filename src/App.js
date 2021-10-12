@@ -1,18 +1,15 @@
-import React, {useRef} from 'react'
-import {Canvas, useFrame} from '@react-three/fiber'
-import {OrbitControls, Stars} from '@react-three/drei'
+import React, {useRef, Suspense, useState} from 'react'
+import {Canvas, useFrame, useThree, useLoader} from '@react-three/fiber'
+import {Html, OrbitControls} from '@react-three/drei'
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import "./App.css"
+import {Overlay} from "./Overlay"
 
-function Torus(props) {
-    const meshRef = useRef()
-    useFrame(() => {
-        meshRef.current.rotation.x = meshRef.current.rotation.y += 0.01
-    })
+
+function Model() {
+    const gltf = useLoader(GLTFLoader, "/scene.gltf")
     return (
-        <mesh {...props} ref={meshRef}>
-            <torusGeometry args={[1, 0.5, 32, 100]}/>
-            <meshNormalMaterial/>
-        </mesh>
+        <primitive object={gltf.scene}/>
     )
 }
 
@@ -21,7 +18,7 @@ const Lights = () => {
         <>
             {/* Ambient Light illuminates lights for all objects */}
             <ambientLight intensity={0.3}/>
-            {/* Diretion light */}
+            {/* Directional light */}
             <directionalLight position={[10, 10, 5]} intensity={1}/>
             <directionalLight
                 castShadow
@@ -36,18 +33,46 @@ const Lights = () => {
                 shadow-camera-bottom={-10}
             />
             {/* Spotlight Large overhead light */}
-            <spotLight intensity={1} position={[1000, 0, 0]} castShadow/>
+            <spotLight intensity={1} position={[1000, 0, 0]}/>
         </>
     );
 };
 
-export default function App() {
+
+function HTMLContent() {
+
+    const ref = useRef()
+
+    useFrame(() => {
+        ref.current.rotation.y += 0.01
+    })
     return (
-        <Canvas className={"background-canvas"}>
-            <Lights />
-            <Stars/>
-            <Torus position={[2, 2, 2]}/>
+        <>
+            <Html fullscreen>
+                <Overlay/>
+            </Html>
+            <group position={[0, 20, 10]}>
+                <mesh ref={ref} position={[0, -50, 0]}>
+                    <Model/>
+                </mesh>
+                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -51, 0]}>
+                    <planeGeometry attach={"geometry"} args={[100000, 100000]}/>
+                    <meshStandardMaterial roughness={0.3} color={"beige"}/>
+                </mesh>
+            </group>
             <OrbitControls/>
+        </>
+    )
+}
+
+export default function App()
+{
+    return (
+        <Canvas colorManagement camera={{position: [0, 0, 120], fov: 70}} className={"background-canvas"}>
+            <Lights/>
+            <Suspense fallback={null}>
+                <HTMLContent/>
+            </Suspense>
         </Canvas>
     )
 }
