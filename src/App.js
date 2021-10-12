@@ -28,6 +28,10 @@ function Loader() {
                     <div className='loading-bar-container'>
                         <a.div className='loading-bar' style={{ width: progress }}></a.div>
                     </div>
+                    <div className={"loading-text-container"}>
+                        <p className={"loading-text"}>LOADING THE PAGE CAN TAKE A WHILE FOR THE FIRST TIME</p>
+                        <p className={"loading-text"}>THANK YOU FOR YOUR PATIENCE</p>
+                    </div>
                 </a.div>
             )
     );

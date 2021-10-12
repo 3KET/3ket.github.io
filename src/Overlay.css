@@ -244,15 +244,31 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    flex-direction: column;
 }
 
 .loading-bar-container {
     width: 200px;
     height: 20px;
     background: linear-gradient(145deg, rgb(222, 204, 207) 0%, rgb(208, 189, 165) 100%);
+    margin-bottom: 10px;
 }
 
 .loading-bar {
     height: 20px;
     background: dodgerblue;
+}
+
+.loading-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-text {
+    font-family: 'Poppins', sans-serif;
+    margin: 5px 0;
+    font-weight: bold;
+    letter-spacing: -1px;
 }
