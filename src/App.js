@@ -1,9 +1,10 @@
 import React, {useRef, Suspense, useState} from 'react'
 import {Canvas, useFrame, useThree, useLoader} from '@react-three/fiber'
-import {Html, OrbitControls} from '@react-three/drei'
+import {Html, OrbitControls, useProgress} from '@react-three/drei'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import "./App.css"
 import {Overlay} from "./Overlay"
+import { a, useTransition } from "@react-spring/web";
 
 
 function Model() {
@@ -11,6 +12,25 @@ function Model() {
     return (
         <primitive object={gltf.scene}/>
     )
+}
+
+function Loader() {
+    const { active, progress } = useProgress();
+    const transition = useTransition(active, {
+        from: { opacity: 1, progress: 0 },
+        leave: { opacity: 0 },
+        update: { progress },
+    });
+    return transition(
+        ({ progress, opacity }, active) =>
+            active && (
+                <a.div className='loading' style={{ opacity }}>
+                    <div className='loading-bar-container'>
+                        <a.div className='loading-bar' style={{ width: progress }}></a.div>
+                    </div>
+                </a.div>
+            )
+    );
 }
 
 const Lights = () => {
@@ -68,11 +88,14 @@ function HTMLContent() {
 export default function App()
 {
     return (
-        <Canvas colorManagement camera={{position: [0, 0, 120], fov: 70}} className={"background-canvas"}>
-            <Lights/>
-            <Suspense fallback={null}>
-                <HTMLContent/>
-            </Suspense>
-        </Canvas>
+        <>
+            <Canvas colorManagement camera={{position: [0, 0, 120], fov: 70}} className={"background-canvas"}>
+                <Lights/>
+                <Suspense fallback={null}>
+                    <HTMLContent/>
+                </Suspense>
+            </Canvas>
+            <Loader />
+        </>
     )
 }
