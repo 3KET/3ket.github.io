@@ -1,20 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900,400italic,700italic,900italic');
 
 .hero-container {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     padding: 40px;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     z-index: 100;
-    background: rgba(0, 0, 0, 0.35);
-    mix-blend-mode: exclusion;
+    mix-blend-mode: normal;
+}
+
+.phonetic-spelling-text {
+    font-family: 'Arimo', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.hero-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    flex: 1;
+    width: 100%;
+    height: 100%;
 }
 
 .code-text {
@@ -24,6 +41,7 @@
     border-radius: 5px;
     color: white;
     font-size: 30px;
+    mix-blend-mode: normal;
 }
 
 .scroll-down-container {
@@ -38,18 +56,179 @@
     color: white;
 }
 
-.report-text {
-    flex: 1 0;
-    color: white;
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
+.row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.row-1 {
+    text-align: left;
+}
+
+.row-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-3 {
+    text-align: right;
+}
+
+.top-left {
+    display: flex;
+    flex-direction: column;
+}
+
+
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+.hero-text:hover {
+    animation: text-shadow 1s ease-in-out forwards;
+
+}
+
+@keyframes popout {
+    0% {
+        transform: translate3d(0, 0, 0);
+        text-shadow: 0 0 0 dodgerblue;
+        color: black;
+    }
+    30% {
+        transform: translate3d(0, 0, 0);
+        text-shadow: 0 0 0 dodgerblue;
+        color: black;
+    }
+    70%{
+        transform: translate3d(0.1em, -0.1em,0);
+        text-shadow: -0.1em 0.1em dodgerblue;
+        color: black;
+    }
+    100%{
+        transform: translate3d(0.1em, -0.1em,0);
+        text-shadow: -0.1em 0.1em dodgerblue;
+        color: black;
+    }
+}
+
+@keyframes text-shadow {
+    0% {
+        transform: translateX(0);
+        text-shadow:
+                0 0 0 #0c2ffb,
+                0 0 0 #2cfcfd,
+                0 0 0 #fb203b,
+                0 0 0 #fefc4b;
+    }
+
+    20% {
+        transform: translateX(-0.3em);
+        text-shadow:
+                0.125em 0 0 #0c2ffb,
+                0.25em 0 0 #2cfcfd,
+                -0.125em 0 0 #fb203b,
+                -0.25em 0 0 #fefc4b;
+    }
+
+    40% {
+        transform: translateX(0.2em);
+        text-shadow:
+                -0.0625em 0 0 #0c2ffb,
+                -0.125em 0 0 #2cfcfd,
+                0.0625em 0 0 #fb203b,
+                0.125em 0 0 #fefc4b;
+    }
+
+    60% {
+        transform: translateX(-0.15em);
+        text-shadow:
+                0.03125em 0 0 #0c2ffb,
+                0.0625em 0 0 #2cfcfd,
+                -0.03125em 0 0 #fb203b,
+                -0.0625em 0 0 #fefc4b;
+    }
+
+    80% {
+        transform: translateX(0);
+        text-shadow:
+                0 0 0 #0c2ffb,
+                0 0 0 #2cfcfd,
+                0 0 0 #fb203b,
+                0 0 0 #fefc4b;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.bottom-left {
+    letter-spacing: -1px;
+}
+
+.corner-card-title:hover {
+    color: red
+}
+
+.bottom-right {
+    letter-spacing: -1px;
+}
+
+.corner-card {
     pointer-events: auto;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+}
+
+.corner-card-title {
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 35px;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+}
+
+.corner-card-title:hover {
+    animation: popout 0.5s forwards alternate cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+
+.hero-text {
+    font-family: 'Antonio', sans-serif;
+    flex: 1 1 0;
+    height: 30px;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 30px;
+    color: black;
+    letter-spacing: -2px;
+    mix-blend-mode: exclusion;
+    margin: 0;
+}
+
+.corner-card-text {
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.cc-text-left {
+    margin: 0 0 2px 0;
+}
+
+.cc-text-right {
+    margin: 0 0 2px 0;
 }
 
 .flex-grow {
-    flex: 1 0
+    flex: 1 0;
 }

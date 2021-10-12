@@ -7,28 +7,42 @@ console.log(down_arrow)
 export function Overlay() {
     return (
         <div className={"hero-container"}>
-            <div className={"flex-grow"}/>
-            <p
-                style={{
-                    fontFamily: "'Antonio', sans-serif",
-                    flex: "1 1 0%",
-                    height: 30,
-                    fontSize: 100,
-                    fontWeight: "700",
-                    lineHeight: "30px",
-                    color: "white",
-                    letterSpacing: -2,
-                }}>
-                3KET
-            </p>
+            <div className={"hero-container-row"}>
+                <div className={"row row-1"}>
+                    <div className={"corner-card top-left"}>
+                        <p className={"hero-text"}>3KET</p>
+                        <p className={"phonetic-spelling-text"}>/'θrikɪt/</p>
+                    </div>
+                    <div className={"corner-card bottom-left"}>
+                        <p className={"corner-card-title"}>DEVELOPERS</p>
+                        <p className={"corner-card-text cc-text-left"}>Doğa Tansel</p>
+                        <p className={"corner-card-text cc-text-left"}>Ege Kaan Gürkan</p>
+                        <p className={"corner-card-text cc-text-left"}>Mehmet Çalışkan</p>
+                        <p className={"corner-card-text cc-text-left"}>Musa Ege Ünalan</p>
+                        <p className={"corner-card-text cc-text-left"}>Mustafa Göktan Güdükbay</p>
+                    </div>
+                </div>
+                <div className={"row row-2"}>
+                    <div className={"flex-grow"}/>
+                    {/*<p className={"hero-text"}>
+                        3KET
+                    </p>*/}
 
-            <p className={"code-text"}>
-                coming soon
-            </p>
-
-            <a href={specification_report} rel={"noopener"} target={"_blank"} className={"report-text"}>
-                Specification Report
-            </a>
+                </div>
+                <div className={"row row-3"}>
+                    <div className={"corner-card top-right"}>
+                        <p className={"corner-card-title"}>REPORTS</p>
+                        <br/>
+                        <a target={"_blank"} href={specification_report} className={"corner-card-text cc-text-right"}>Project Specifications Report</a>
+                    </div>
+                    <div className={"corner-card bottom-right"}>
+                        <p className={"corner-card-title"}>SUPERVISOR</p>
+                        <p className={"corner-card-text cc-text-right"}>Eray Tüzün</p>
+                        <p className={"corner-card-title cc-text-right"}>INNOVATION EXPERT</p>
+                        <p className={"corner-card-text cc-text-right"}>Ahmet Eren Başak</p>
+                    </div>
+                </div>
+            </div>
             {/*<div className={"flex-grow"}/>
                 <div className={"scroll-down-container"}>
                 <img src={down_arrow} alt={"down arrow"} color={"white"} ref={arrow_down_ref}/>

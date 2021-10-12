@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Overlay} from "./Overlay"
 
 ReactDOM.render(
     <React.StrictMode>
-        <Overlay/>
         <App/>
     </React.StrictMode>,
     document.getElementById('root')
