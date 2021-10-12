@@ -1587,6 +1587,16 @@
   "resolved" "https://registry.npmjs.org/@react-spring/types/-/types-9.3.0.tgz"
   "version" "9.3.0"
 
+"@react-spring/web@^9.3.0":
+  "integrity" "sha512-OTAGKRdyz6fLRR1tABFyw9KMpytyATIndQrj0O6RG47GfjiInpf4+WZKxo763vpS7z1OlnkI81WLUm/sqOqAnA=="
+  "resolved" "https://registry.npmjs.org/@react-spring/web/-/web-9.3.0.tgz"
+  "version" "9.3.0"
+  dependencies:
+    "@react-spring/animated" "~9.3.0"
+    "@react-spring/core" "~9.3.0"
+    "@react-spring/shared" "~9.3.0"
+    "@react-spring/types" "~9.3.0"
+
 "@react-three/drei@^7.13.1":
   "integrity" "sha512-GH6AU5DXiRA8aSf2SBtotvvvCGU8PVEmhhRnfr8a8jId+ULbUTsbleIEThITbw+2LdBPzsSncIcTxEE7YInhqg=="
   "resolved" "https://registry.npmjs.org/@react-three/drei/-/drei-7.13.1.tgz"
@@ -9524,7 +9534,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.13", "react-dom@>=17.0":
+"react-dom@*", "react-dom@^16.8.0  || ^17.0.0", "react-dom@^17.0.2", "react-dom@>=16.13", "react-dom@>=17.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
