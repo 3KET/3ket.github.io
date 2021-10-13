@@ -72,7 +72,7 @@ function HTMLContent() {
 
     useFrame(({ mouse }) => {
         const x = (mouse.x * viewport.width) / 2
-        const y = (mouse.y * viewport.height) s/ 2
+        const y = (mouse.y * viewport.height) / 2
         const targetX = x * 0.003;
         const targetY = y * 0.003;
         ref.current.rotation.y += 0.5 * (targetX - ref.current.rotation.y)
