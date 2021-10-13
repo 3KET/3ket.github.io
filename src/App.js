@@ -9,6 +9,7 @@ import { a, useTransition } from "@react-spring/web";
 
 function Model() {
     const gltf = useLoader(GLTFLoader, "/scene.gltf")
+
     return (
         <primitive object={gltf.scene}/>
     )
@@ -67,24 +68,28 @@ function HTMLContent() {
 
     const ref = useRef()
 
-    useFrame(() => {
-        ref.current.rotation.y += 0.01
+    const { viewport } = useThree()
+
+    useFrame(({ mouse }) => {
+        const x = (mouse.x * viewport.width) / 2
+        const y = (mouse.y * viewport.height) / 2
+        const targetX = x * 0.003;
+        const targetY = y * 0.003;
+        ref.current.rotation.y += 0.5 * (targetX - ref.current.rotation.y)
+        // ref.current.rotation.x += 0.5 * (targetY - ref.current.rotation.x)
+        console.log(x, y)
     })
     return (
         <>
-            <Html fullscreen>
-                <Overlay/>
-            </Html>
+
             <group position={[0, 20, 10]}>
                 <mesh ref={ref} position={[0, -50, 0]}>
                     <Model/>
                 </mesh>
-                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -51, 0]}>
-                    <planeGeometry attach={"geometry"} args={[100000, 100000]}/>
-                    <meshStandardMaterial roughness={0.3} color={"beige"}/>
-                </mesh>
             </group>
-            <OrbitControls/>
+            <Html fullscreen style={{pointerEvents:"none"}}>
+                <Overlay/>
+            </Html>
         </>
     )
 }
