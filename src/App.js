@@ -9,7 +9,17 @@ import { a, useTransition } from "@react-spring/web";
 
 function Model() {
     const gltf = useLoader(GLTFLoader, "/scene.gltf")
+    gltf.scene.x = 0
+    gltf.scene.y = 0
+    return (
+        <primitive object={gltf.scene}/>
+    )
+}
 
+function Model2() {
+    const gltf = useLoader(GLTFLoader, "/amphitheater/scene.gltf")
+    gltf.scene.x = 0
+    gltf.scene.y = 0
     return (
         <primitive object={gltf.scene}/>
     )
@@ -68,28 +78,16 @@ function HTMLContent() {
 
     const ref = useRef()
 
-    const { viewport } = useThree()
 
-    useFrame(({ mouse }) => {
-        const x = (mouse.x * viewport.width) / 2
-        const y = (mouse.y * viewport.height) / 2
-        const targetX = x * 0.003;
-        const targetY = y * 0.003;
-        ref.current.rotation.y += 0.5 * (targetX - ref.current.rotation.y)
-        // ref.current.rotation.x += 0.5 * (targetY - ref.current.rotation.x)
-        console.log(x, y)
-    })
     return (
         <>
 
-            <group position={[0, 20, 10]}>
-                <mesh ref={ref} position={[0, -50, 0]}>
-                    <Model/>
+            <group position={[0, 0, 0]}>
+                <mesh ref={ref}  scale={[0.8, 0.8, 0.8]} position={[-1215, 0,1350]}>
+
+                    <Model2 />
                 </mesh>
             </group>
-            <Html fullscreen style={{pointerEvents:"none"}}>
-                <Overlay/>
-            </Html>
         </>
     )
 }
@@ -98,11 +96,17 @@ export default function App()
 {
     return (
         <>
-            <Canvas colorManagement camera={{position: [0, 0, 120], fov: 70}} className={"background-canvas"}>
+            <Canvas colorManagement camera={{position: [0, 0, 10], fov: 70}} className={"background-canvas"}>
                 <Lights/>
                 <Suspense fallback={null}>
                     <HTMLContent/>
                 </Suspense>
+
+                <Html fullscreen style={{pointerEvents:"none"}}>
+                    <Overlay/>
+                </Html>
+                <axesHelper />
+                <OrbitControls />
             </Canvas>
             <Loader />
         </>
