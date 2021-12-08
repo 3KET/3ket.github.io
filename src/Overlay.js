@@ -1,6 +1,7 @@
 import "./Overlay.css"
 import down_arrow from "./image/down-arrow.svg"
 import specification_report from "./static/reports/project_specification_report.pdf"
+import analysis_report from "./static/reports/project_analysis_report.pdf"
 
 console.log(down_arrow)
 
@@ -34,6 +35,8 @@ export function Overlay() {
                         <p className={"corner-card-title"}>REPORTS</p>
                         <br/>
                         <a target={"_blank"} href={specification_report} className={"corner-card-text cc-text-right"}>Project Specifications Report</a>
+                        <br/>
+                        <a target={"_blank"} href={analysis_report} className={"corner-card-text cc-text-right"}>Project Analysis Report</a>
                     </div>
                     <div className={"corner-card bottom-right"}>
                         <p className={"corner-card-title"}>SUPERVISOR</p>
