@@ -87,9 +87,6 @@ function HTMLContent() {
                     <Model/>
                 </mesh>
             </group>
-            <Html fullscreen style={{pointerEvents:"none"}}>
-                <Overlay/>
-            </Html>
         </>
     )
 }
@@ -100,6 +97,10 @@ export default function App()
         <>
             <Canvas colorManagement camera={{position: [0, 0, 120], fov: 70}} className={"background-canvas"}>
                 <Lights/>
+
+                <Html fullscreen style={{pointerEvents:"none"}}>
+                    <Overlay/>
+                </Html>
                 <Suspense fallback={null}>
                     <HTMLContent/>
                 </Suspense>

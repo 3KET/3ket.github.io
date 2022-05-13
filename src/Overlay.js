@@ -23,11 +23,11 @@ export function Overlay() {
                         <p className={"corner-card-text cc-text-left"}>Mustafa Göktan Güdükbay</p>
                     </div>
                 </div>
-                <div className={"row row-2"}>
-                    <div className={"flex-grow"}/>
-                    {/*<p className={"hero-text"}>
-                        3KET
-                    </p>*/}
+                <div className={"row row-2"} style={{alignItems: "center", alignContent: "center", flex: 1}}>
+                    <div className={"corner-card top-left"} />
+                    <div className={"corner-card bottom-left"} style={{display: "flex", alignItems: "center", justifyContent:"center", alignContent: "center"}}>
+                        <a target={"_blank"} className={"launch-button"} href={"https://app.3ket.live"}>Launch the app!</a>
+                    </div>
 
                 </div>
                 <div className={"row row-3"}>
